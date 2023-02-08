@@ -1,0 +1,12 @@
+name: DangoClicker
+version: '${project.version}'
+main: io.github.uttmangosteen.dangoclicker.Main
+api-version: 1.17
+prefix: DangoClicker
+authors: [ Underthetree ]
+description: インフレ系放置団子製造クリッカーゲーム
+
+commands:
+  dclicker:
+    description:
+    usage: /dclicker help でコマンドを確認
