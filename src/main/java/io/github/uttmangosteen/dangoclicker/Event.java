@@ -24,7 +24,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
                 p.openInventory(UI.mainMenu());
                 break;
             case "§e§lカーソル":
-                if(TemporaryClass.stock >= 15){
+                if(TemporaryClass.stock >= TemporaryClass.cursorPrise){
                     TemporaryClass.stock = TemporaryClass.stock - TemporaryClass.cursorPrise;
                     TemporaryClass.DPC = TemporaryClass.DPC + 0.1;
                     TemporaryClass.DPS = TemporaryClass.DPS + 0.1;
