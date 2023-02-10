@@ -4,7 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     public static JavaPlugin config;
-    public static boolean runnable;
+    public static JavaPlugin plugin;
 
     @Override
     public void onEnable() {
@@ -15,11 +15,11 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
         config = this;
 
-        runnable = true;
         Timer.perSecond();
+        plugin = this;
+
     }
     @Override
     public void onDisable() {
-        runnable = false;
     }
 }
