@@ -11,10 +11,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.List;
 
 public class Event implements Listener {
-    public Event(Plugin plugin){
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
-
+    public Event(Plugin plugin){Bukkit.getPluginManager().registerEvents(this, plugin);}
     @EventHandler
     public void onClick(InventoryClickEvent e){
         ItemStack clickedItem = e.getCurrentItem();

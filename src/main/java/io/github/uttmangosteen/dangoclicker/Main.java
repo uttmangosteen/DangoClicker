@@ -17,7 +17,6 @@ public final class Main extends JavaPlugin {
 
         Timer.perSecond();
         plugin = this;
-
     }
     @Override
     public void onDisable() {
