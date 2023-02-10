@@ -31,10 +31,10 @@ public class UI {
         inv = Bukkit.createInventory(null, 54, "§d§lD§f§lan§a§lgo§e§lClicker§f");
         ItemStack item_0 = UI.createItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, 1, 0, " ", null);
 
-        ItemStack cursor = UI.createItem(Material.ARROW, 1, 0, "§e§lカーソル", List.of("§a§l" + TemporaryClass.cursorPrise + "団子", "§f§l" + TemporaryClass.cursorAmount + "§7§lカーソルが毎秒§f§l" + TemporaryClass.cursorAmount * 0.1 + "§7§l団子生産", "§7§o「自動クリック」"));
+        ItemStack cursor = UI.createItem(Material.ARROW, 1, 0, "§e§lカーソル", List.of("§a§l" + String.format("%.1f", TemporaryClass.cursorPrise) + "団子", "§f§l" + TemporaryClass.cursorAmount + "§7§lカーソルが毎秒§f§l" + String.format("%.1f", TemporaryClass.cursorAmount * 0.1) + "§7§l団子生産", "§7§o「自動クリック」"));
 
         ItemStack crickItem = UI.createItem(Material.matchMaterial(config.getString("clickItem.itemId", "COOKIE")), 1, config.getInt("clickItem.customModelData",0), "§e§lクリックで作る", null);
-        ItemStack stock = UI.createItem(Material.CHEST, 1, 0, "§e§l現在の生産数", List.of("§e§l" + TemporaryClass.stock + "個"));
+        ItemStack stock = UI.createItem(Material.CHEST, 1, 0, "§e§l現在の生産数", List.of("§e§l" + String.format("%.1f", TemporaryClass.stock) + "個"));
         ItemStack save = UI.createItem(Material.EMERALD_BLOCK, 1, 0, "§e§lSAVE", null);
 
         for (int i = 0; i <= 53; i++){
