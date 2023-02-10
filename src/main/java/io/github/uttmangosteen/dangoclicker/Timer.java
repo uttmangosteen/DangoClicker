@@ -9,8 +9,8 @@ public class Timer {
             Bukkit.getScheduler().runTask(Main.plugin,()->{
                 for(Player p: Bukkit.getOnlinePlayers()){
                     if(p.getOpenInventory().getTitle().equals("§d§lD§f§lan§a§lgo§e§lClicker§f")){
-                        p.openInventory(UI.mainMenu());
                         TemporaryClass.stock = TemporaryClass.stock + TemporaryClass.DPS;
+                        p.openInventory(UI.mainMenu());
                     }
                 }
             });

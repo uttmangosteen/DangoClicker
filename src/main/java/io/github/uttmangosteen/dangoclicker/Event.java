@@ -10,8 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
-public class Event implements Listener {
-    public Event(Plugin plugin){Bukkit.getPluginManager().registerEvents(this, plugin);}
+public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPluginManager().registerEvents(this, plugin);}
     @EventHandler
     public void onClick(InventoryClickEvent e){
         ItemStack clickedItem = e.getCurrentItem();
@@ -26,10 +25,11 @@ public class Event implements Listener {
                 break;
             case "§e§lカーソル":
                 if(TemporaryClass.stock >= 15){
-                    TemporaryClass.stock = TemporaryClass.stock - 15;
+                    TemporaryClass.stock = TemporaryClass.stock - TemporaryClass.cursorPrise;
                     TemporaryClass.DPC = TemporaryClass.DPC + 0.1;
                     TemporaryClass.DPS = TemporaryClass.DPS + 0.1;
-                    UI.mainMenu().getItem(22).getItemMeta().setLore(List.of("§e§" + TemporaryClass.stock + "l個"));
+                    TemporaryClass.cursorAmount++;
+                    TemporaryClass.cursorPrise = TemporaryClass.cursorPrise * 1.1;
                     p.openInventory(UI.mainMenu());
                 }
                 break;
