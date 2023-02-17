@@ -13,7 +13,7 @@ public class Command implements CommandExecutor {
         }
         Player player = (Player) sender;
         if (args.length == 0){
-            if (Global.stock.isEmpty()){
+            if (!Global.stock.containsKey(player)){
                 Global.stock.put(player, 0.0);
                 Global.DPC.put(player, 1.0);
                 Global.DPS.put(player, 0.0);
