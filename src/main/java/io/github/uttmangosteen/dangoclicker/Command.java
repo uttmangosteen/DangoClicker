@@ -1,6 +1,5 @@
 package io.github.uttmangosteen.dangoclicker;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -12,14 +11,21 @@ public class Command implements CommandExecutor {
             sender.sendMessage("プレイヤーでないと実行できません");
             return true;
         }
-        Player p = (Player) sender;
+        Player player = (Player) sender;
         if (args.length == 0){
-            p.openInventory(UI.mainMenu());
+            if (Global.stock.isEmpty()){
+                Global.stock.put(player, 0.0);
+                Global.DPC.put(player, 1.0);
+                Global.DPS.put(player, 0.0);
+                Global.cursorAmount.put(player, 0);
+                Global.cursorPrise.put(player, 15.0);
+            }
+            GUI.createInventory(player);
             return true;
         }
         switch (args[0]) {
             case "help":
-                p.sendMessage("/dclicker メインメニューを開く");
+                player.sendMessage("/dclicker メインメニューを開く");
                 return true;
         }
         return false;

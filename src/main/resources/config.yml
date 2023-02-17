@@ -1,3 +1,10 @@
+mysql:
+  host: "localhost"
+  database: "dangoclicker"
+  username: "minecraft"
+  password: "apple"
+  port: "3306"
+
 clickItem:
-  itemId: "BAKED_POTATO"
-  customModelData: 3
+  itemId: "STONE_SWORD"
+  customModelData: 1
