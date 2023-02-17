@@ -37,9 +37,7 @@ public class GUI {
         ItemStack stock = GUI.createItem(Material.CHEST, 1, 0, "§e§l現在の生産数", List.of("§e§l" + String.format("%.1f", Global.stock.get(player)) + "個"));
         ItemStack save = GUI.createItem(Material.EMERALD_BLOCK, 1, 0, "§e§lSAVE", null);
 
-        for (int i = 0; i <= 53; i++){
-            inv.setItem(i, spaceItem);
-        }
+        for (int i = 0; i <= 53; i++){inv.setItem(i, spaceItem);}
 
         inv.setItem(0, cursor);
 
