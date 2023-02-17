@@ -31,6 +31,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
                 }
                 break;
             case "§e§lSAVE":
+                player.closeInventory();
                 player.sendMessage("§f§l[§d§lD§f§lan§a§lgo§e§lClicker§f§l]§a§lセーブ");
                 break;
         }
