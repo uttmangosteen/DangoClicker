@@ -12,16 +12,14 @@ import java.util.List;
 import java.util.UUID;
 
 public class GUI {
-    public static ItemStack createItem(Material material, int amount, int customModelData, String displayName, List<String> lore){
+    private static ItemStack createItem(Material material, int customModelData, String displayName, List<String> lore){
         ItemStack item;
-        item = new ItemStack(material, amount);
+        item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
         meta.setCustomModelData(customModelData);
         meta.setDisplayName(displayName);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        if(lore != null){
-            meta.setLore(lore);
-        }
+        if(lore != null){meta.setLore(lore);}
         item.setItemMeta(meta);
         return item;
     }
@@ -32,20 +30,20 @@ public class GUI {
 
         Inventory inv = Bukkit.createInventory(null, 54, "§d§lD§f§lan§a§lgo§e§lClicker§f");
 
-        ItemStack spaceItem = GUI.createItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, 1, 0, " ", null);
+        ItemStack spaceItem = GUI.createItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, 0, " ", null);
 
-        ItemStack cursor = GUI.createItem(Material.ARROW, 1, 0, "§e§lカーソル", List.of("§a§l" + playerData.cursorPrise + "団子", "§f§l" + playerData.cursorAmount + "§7§lカーソルが毎秒§f§l" + playerData.cursorAmount * 0.2 + "§7§l団子生産", "§7§o「10秒毎に自動クリック」"));
-        ItemStack grandma = GUI.createItem(Material.PLAYER_HEAD, 1, 0, "§e§lスティーブ", List.of("§a§l" + playerData.grandmaPrise + "団子", "§f§l" + playerData.grandmaAmount + "§7§lスティーブが毎秒§f§l" + playerData.grandmaAmount + "§7§l団子生産", "§7§o「団子を作ってくれる素敵なスティーブ」"));
-        ItemStack factory = GUI.createItem(Material.SMOKER, 1, 0, "§e§l工場", List.of("§a§l" + playerData.factoryPrise + "団子", "§f§l" + playerData.factoryAmount + "§7§l工場が毎秒§f§l" + playerData.factoryAmount * 4 + "§7§l団子生産", "§7§o「大量の団子を生産します」"));
-        ItemStack mine = GUI.createItem(Material.NETHERITE_PICKAXE, 1, 0, "§e§l採掘場", List.of("§a§l" + playerData.minePrise + "団子", "§f§l" + playerData.mineAmount + "§7§l採掘場が毎秒§f§l" + playerData.mineAmount * 10 + "§7§l団子生産", "§7§o「団子の生地と串を掘り出します」"));
-        ItemStack shipment = GUI.createItem(Material.DRAGON_HEAD, 1, 0, "§e§lドラゴン", List.of("§a§l" + playerData.shipmentPrise + "団子", "§f§l" + playerData.shipmentAmount + "§7§lドラゴンが毎秒§f§l" + playerData.shipmentAmount * 20 + "§7§l団子生産", "§7§o「異世界から新鮮な団子を輸送します」"));
-        ItemStack alchemyLab = GUI.createItem(Material.BREWING_STAND, 1, 0, "§e§l錬金術ラボ", List.of("§a§l" + playerData.alchemyLabPrise + "団子", "§f§l" + playerData.alchemyLabAmount + "§7§l錬金術ラボが毎秒§f§l" + playerData.alchemyLabAmount * 100 + "§7§l団子生産", "§7§o「金を団子に変化させます」"));
-        ItemStack portal = GUI.createItem(Material.END_PORTAL_FRAME, 1, 0, "§e§lポータル", List.of("§a§l" + playerData.portalPrise + "団子", "§f§l" + playerData.portalAmount + "§7§lポータルが毎秒§f§l" + playerData.portalAmount * 1333.2 + "§7§l団子生産", "§7§o「団子界に繋がる扉を開きます」"));
-        ItemStack timeMachine = GUI.createItem(Material.CLOCK, 1, 0, "§e§lタイムマシン", List.of("§a§l" + playerData.timeMachinePrise + "団子", "§f§l" + playerData.timeMachineAmount + "§7§lタイムマシンが毎秒§f§l" + playerData.timeMachineAmount * 24691.2 + "§7§l団子生産", "§7§o「食べられる前の団子を過去から取り寄せます」"));
+        ItemStack cursor = GUI.createItem(Material.ARROW, 0, "§e§lカーソル", List.of("§a§l" + playerData.priseCursor + "団子", "§f§l" + playerData.amountCursor + "§7§lカーソルが毎秒§f§l" + playerData.amountCursor * 0.2 + "§7§l団子生産", "§7§o「10秒毎に自動クリック」"));
+        ItemStack grandma = GUI.createItem(Material.PLAYER_HEAD, 0, "§e§lスティーブ", List.of("§a§l" + playerData.priseGrandma + "団子", "§f§l" + playerData.amountGrandma + "§7§lスティーブが毎秒§f§l" + playerData.amountGrandma + "§7§l団子生産", "§7§o「団子を作ってくれる素敵なスティーブ」"));
+        ItemStack factory = GUI.createItem(Material.SMOKER, 0, "§e§l工場", List.of("§a§l" + playerData.priseFactory + "団子", "§f§l" + playerData.amountFactory + "§7§l工場が毎秒§f§l" + playerData.amountFactory * 4 + "§7§l団子生産", "§7§o「大量の団子を生産します」"));
+        ItemStack mine = GUI.createItem(Material.NETHERITE_PICKAXE, 0, "§e§l採掘場", List.of("§a§l" + playerData.priseMine + "団子", "§f§l" + playerData.amountMine + "§7§l採掘場が毎秒§f§l" + playerData.amountMine * 10 + "§7§l団子生産", "§7§o「団子の生地と串を掘り出します」"));
+        ItemStack shipment = GUI.createItem(Material.DRAGON_HEAD, 0, "§e§lドラゴン", List.of("§a§l" + playerData.priseShipment + "団子", "§f§l" + playerData.amountShipment + "§7§lドラゴンが毎秒§f§l" + playerData.amountShipment * 20 + "§7§l団子生産", "§7§o「異世界から新鮮な団子を輸送します」"));
+        ItemStack alchemyLab = GUI.createItem(Material.BREWING_STAND, 0, "§e§l錬金術ラボ", List.of("§a§l" + playerData.priseAlchemyLab + "団子", "§f§l" + playerData.amountAlchemyLab + "§7§l錬金術ラボが毎秒§f§l" + playerData.amountAlchemyLab * 100 + "§7§l団子生産", "§7§o「金を団子に変化させます」"));
+        ItemStack portal = GUI.createItem(Material.END_PORTAL_FRAME, 0, "§e§lポータル", List.of("§a§l" + playerData.prisePortal + "団子", "§f§l" + playerData.amountPortal + "§7§lポータルが毎秒§f§l" + playerData.amountPortal * 1333.2 + "§7§l団子生産", "§7§o「団子界に繋がる扉を開きます」"));
+        ItemStack timeMachine = GUI.createItem(Material.CLOCK, 0, "§e§lタイムマシン", List.of("§a§l" + playerData.priseTimeMachine + "団子", "§f§l" + playerData.amountTimeMachine + "§7§lタイムマシンが毎秒§f§l" + playerData.amountTimeMachine * 24691.2 + "§7§l団子生産", "§7§o「食べられる前の団子を過去から取り寄せます」"));
 
-        ItemStack crickItem = GUI.createItem(Material.matchMaterial(Global.config.getString("clickItem.itemId", "COOKIE")), 1, Global.config.getInt("clickItem.customModelData",0), "§e§lクリックで作る", null);
-        ItemStack stock = GUI.createItem(Material.CHEST, 1, 0, "§e§l現在の生産数", List.of("§e§l" + playerData.stock + "個"));
-        ItemStack save = GUI.createItem(Material.EMERALD_BLOCK, 1, 0, "§e§lSAVE", null);
+        ItemStack crickItem = GUI.createItem(Material.matchMaterial(Global.config.getString("clickItem.itemId", "COOKIE")), Global.config.getInt("clickItem.customModelData",0), "§e§lクリックで作る", null);
+        ItemStack stock = GUI.createItem(Material.CHEST, 0, "§e§l現在の生産数", List.of("§e§l" + playerData.stock + "個"));
+        ItemStack save = GUI.createItem(Material.EMERALD_BLOCK, 0, "§e§lSAVE", null);
 
         for (int i = 0; i <= 53; i++){inv.setItem(i, spaceItem);}
 
