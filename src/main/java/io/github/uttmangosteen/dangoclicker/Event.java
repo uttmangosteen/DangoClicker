@@ -21,78 +21,78 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
         PlayerData playerData = Global.saveData.get(uuid);
         switch (clickedItem.getItemMeta().getDisplayName()){
             case "§e§lクリックで作る":
-                playerData.setStock(playerData.getStock() + playerData.getDPC());
+                playerData.stock = playerData.stock + playerData.DPC;
                 GUI.createInventory(player);
                 break;
             case "§e§lカーソル":
-                if(playerData.getStock() >= playerData.getCursorPrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getCursorPrise());
-                    playerData.setDPS(playerData.getDPS() + 0.2);
-                    playerData.setCursorAmount(playerData.getCursorAmount() + 1);
-                    playerData.setCursorPrise(playerData.getCursorPrise() * 1.1);
+                if(playerData.stock >= playerData.cursorPrise){
+                    playerData.stock = playerData.stock - playerData.cursorPrise;
+                    playerData.DPS = playerData.DPS + 0.2;
+                    playerData.cursorAmount++;
+                    playerData.cursorPrise = playerData.cursorPrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lスティーブ":
-                if(playerData.getStock() >= playerData.getGrandmaPrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getGrandmaPrise());
-                    playerData.setDPS(playerData.getDPS() + 1);
-                    playerData.setGrandmaAmount(playerData.getGrandmaAmount() + 1);
-                    playerData.setGrandmaPrise(playerData.getGrandmaPrise() * 1.1);
+                if(playerData.stock >= playerData.cursorPrise){
+                    playerData.stock = playerData.stock - playerData.grandmaPrise;
+                    playerData.DPS = playerData.DPS + 1;
+                    playerData.grandmaAmount++;
+                    playerData.grandmaPrise = playerData.grandmaPrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§l工場":
-                if(playerData.getStock() >= playerData.getFactoryPrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getFactoryPrise());
-                    playerData.setDPS(playerData.getDPS() + 4);
-                    playerData.setFactoryAmount(playerData.getFactoryAmount() + 1);
-                    playerData.setFactoryPrise(playerData.getFactoryPrise() * 1.1);
+                if(playerData.stock >= playerData.factoryPrise){
+                    playerData.stock = playerData.stock - playerData.factoryPrise;
+                    playerData.DPS = playerData.DPS + 4;
+                    playerData.factoryAmount++;
+                    playerData.factoryPrise = playerData.factoryPrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§l採掘場":
-                if(playerData.getStock() >= playerData.getMinePrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getMinePrise());
-                    playerData.setDPS(playerData.getDPS() + 10);
-                    playerData.setMineAmount(playerData.getMineAmount() + 1);
-                    playerData.setMinePrise(playerData.getMinePrise() * 1.1);
+                if(playerData.stock >= playerData.minePrise){
+                    playerData.stock = playerData.stock - playerData.minePrise;
+                    playerData.DPS = playerData.DPS + 10;
+                    playerData.mineAmount++;
+                    playerData.minePrise = playerData.minePrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lドラゴン":
-                if(playerData.getStock() >= playerData.getShipmentPrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getShipmentPrise());
-                    playerData.setDPS(playerData.getDPS() + 20);
-                    playerData.setShipmentAmount(playerData.getShipmentAmount() + 1);
-                    playerData.setShipmentPrise(playerData.getShipmentPrise() * 1.1);
+                if(playerData.stock >= playerData.shipmentPrise){
+                    playerData.stock = playerData.stock - playerData.shipmentPrise;
+                    playerData.DPS = playerData.DPS + 20;
+                    playerData.shipmentAmount++;
+                    playerData.shipmentPrise = playerData.shipmentPrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§l錬金術ラボ":
-                if(playerData.getStock() >= playerData.getAlchemyLabPrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getAlchemyLabPrise());
-                    playerData.setDPS(playerData.getDPS() + 100);
-                    playerData.setAlchemyLabAmount(playerData.getAlchemyLabAmount() + 1);
-                    playerData.setAlchemyLabPrise(playerData.getAlchemyLabPrise() * 1.1);
+                if(playerData.stock >= playerData.alchemyLabPrise){
+                    playerData.stock = playerData.stock - playerData.alchemyLabPrise;
+                    playerData.DPS = playerData.DPS + 100;
+                    playerData.alchemyLabAmount++;
+                    playerData.alchemyLabPrise = playerData.alchemyLabPrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lポータル":
-                if(playerData.getStock() >= playerData.getPortalPrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getPortalPrise());
-                    playerData.setDPS(playerData.getDPS() + 1333.2);
-                    playerData.setPortalAmount(playerData.getPortalAmount() + 1);
-                    playerData.setPortalPrise(playerData.getPortalPrise() * 1.1);
+                if(playerData.stock >= playerData.portalPrise){
+                    playerData.stock = playerData.stock - playerData.portalPrise;
+                    playerData.DPS = playerData.DPS + 1333.2;
+                    playerData.portalAmount++;
+                    playerData.portalPrise = playerData.portalPrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lタイムマシン":
-                if(playerData.getStock() >= playerData.getTimeMachinePrise()){
-                    playerData.setStock(playerData.getStock() - playerData.getTimeMachinePrise());
-                    playerData.setDPS(playerData.getDPS() + 24691.2);
-                    playerData.setTimeMachineAmount(playerData.getTimeMachineAmount() + 1);
-                    playerData.setTimeMachinePrise(playerData.getTimeMachinePrise() * 1.1);
+                if(playerData.stock >= playerData.timeMachinePrise){
+                    playerData.stock = playerData.stock - playerData.timeMachinePrise;
+                    playerData.DPS = playerData.DPS + 24691.2;
+                    playerData.timeMachineAmount++;
+                    playerData.timeMachinePrise = playerData.timeMachinePrise * 1.1;
                     GUI.createInventory(player);
                 }
                 break;
