@@ -32,6 +32,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
                     playerData.setCursorPrise(playerData.getCursorPrise() * 1.1);
                     GUI.createInventory(player);
                 }
+                break;
             case "§e§lスティーブ":
                 if(playerData.getStock() >= playerData.getGrandmaPrise()){
                     playerData.setStock(playerData.getStock() - playerData.getGrandmaPrise());
