@@ -34,7 +34,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
                 }
                 break;
             case "§e§lスティーブ":
-                if(playerData.stock >= playerData.priseCursor){
+                if(playerData.stock >= playerData.priseGrandma){
                     playerData.stock = playerData.stock - playerData.priseGrandma;
                     playerData.DPS = playerData.DPS + 1;
                     playerData.amountGrandma++;
