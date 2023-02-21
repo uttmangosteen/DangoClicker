@@ -10,7 +10,7 @@ public class ViewFormat {
         if(digitAmount == 0){
             return viewString.append("0.").append(number).toString();
         }else if(digitAmount <= 4){
-            return viewString.append(String.valueOf(number), 0, digitAmount).toString();
+            return viewString.append(String.valueOf(number), 0, digitAmount).append(".").append(String.valueOf(number), digitAmount, digitAmount + 1).toString();
         }else if(digitAmount <= 64){
             int digitNamePath = digitAmount / 4 % 18;
             int bigViewNumber = Integer.parseInt(String.valueOf(number).substring(0, digitAmount % 4));
