@@ -11,8 +11,10 @@ public class Timer {
             for(Player player : Bukkit.getOnlinePlayers()){
                 UUID uuid = player.getUniqueId();
                 PlayerData playerData = Global.saveData.get(uuid);
-                if(player.getOpenInventory().getTitle().equals("§d§lD§f§lan§a§lgo§e§lClicker§f")){
+                if(!Global.saveData.isEmpty()){
                     playerData.stock = playerData.stock.add(playerData.DPS);
+                }
+                if(player.getOpenInventory().getTitle().equals("§d§lD§f§lan§a§lgo§e§lClicker§f")){
                     GUI.createInventory(player);
                 }
             }
