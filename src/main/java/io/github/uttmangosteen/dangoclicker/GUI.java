@@ -51,12 +51,25 @@ public class GUI {
 
         inv.setItem(0, cursor);
         inv.setItem(1, grandma);
-        inv.setItem(2, factory);
-        inv.setItem(3, mine);
-        inv.setItem(4, shipment);
-        inv.setItem(5, alchemyLab);
-        inv.setItem(6, portal);
-        inv.setItem(7, timeMachine);
+
+        if(!playerData.amountGrandma.equals(BigInteger.ZERO)){
+            inv.setItem(2, factory);
+        }
+        if(!playerData.amountFactory.equals(BigInteger.ZERO)){
+            inv.setItem(3, mine);
+        }
+        if(!playerData.amountMine.equals(BigInteger.ZERO)){
+            inv.setItem(4, shipment);
+        }
+        if(!playerData.amountShipment.equals(BigInteger.ZERO)){
+            inv.setItem(5, alchemyLab);
+        }
+        if(!playerData.amountAlchemyLab.equals(BigInteger.ZERO)){
+            inv.setItem(6, portal);
+        }
+        if(!playerData.amountTimeMachine.equals(BigInteger.ZERO)){
+            inv.setItem(7, timeMachine);
+        }
 
         inv.setItem(22, stock);
         inv.setItem(40, crickItem);

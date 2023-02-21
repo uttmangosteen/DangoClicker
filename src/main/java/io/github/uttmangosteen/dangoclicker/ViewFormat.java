@@ -12,12 +12,10 @@ public class ViewFormat {
         }else if(digitAmount <= 4){
             return viewString.append(String.valueOf(number), 0, digitAmount + 1).insert(digitAmount, ".").toString();
         }else if(digitAmount <= 64){
-            int digitNamePath = digitAmount / 4;
-            int bigViewNumber = Integer.parseInt(String.valueOf(number).substring(0, digitAmount % 4));
-            int smallViewNumber = Integer.parseInt(String.valueOf(number).substring(digitAmount % 4, digitAmount % 4 + 4));
-            viewString.append(bigViewNumber).append(digitName[digitNamePath]);
-            if(!(smallViewNumber == 0)){
-                viewString.append(smallViewNumber).append(digitName[digitNamePath - 1]);
+            viewString.append(String.valueOf(number), 0, (digitAmount - 1) % 4 + 1).append(digitName[(digitAmount - 1) / 4]);
+            int small4Digit = Integer.parseInt(String.valueOf(number).substring((digitAmount - 1) % 4 + 1, (digitAmount - 1) % 4 + 5));
+            if(!(small4Digit == 0)){
+                viewString.append(small4Digit).append(digitName[(digitAmount - 1) / 4 - 1]);
             }
             return viewString.toString();
         }else{
