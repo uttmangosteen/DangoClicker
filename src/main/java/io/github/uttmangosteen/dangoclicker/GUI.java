@@ -25,11 +25,12 @@ public class GUI {
         return item;
     }
 
-    public static void createInventory(Player player){
+    public static void createInventory(Player player) {
         UUID uuid = player.getUniqueId();
         PlayerData playerData = Global.saveData.get(uuid);
 
         Inventory inv = Bukkit.createInventory(null, 54, "§d§lD§f§lan§a§lgo§e§lClicker§f");
+
 
         ItemStack spaceItem = GUI.createItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, 0, " ", null);
 
@@ -42,11 +43,11 @@ public class GUI {
         ItemStack portal = GUI.createItem(Material.END_PORTAL_FRAME, 0, "§e§lポータル", List.of("§a§l" + ViewFormat.bigIntegerFormat(playerData.prisePortal) + "団子", "§f§l" + playerData.amountPortal + "§7§lポータルが毎秒§f§l" + ViewFormat.bigIntegerFormat(playerData.amountPortal.multiply(BigInteger.valueOf(13332))) + "§7§l団子生産", "§7§o「団子界に繋がる扉を開きます」"));
         ItemStack timeMachine = GUI.createItem(Material.CLOCK, 0, "§e§lタイムマシン", List.of("§a§l" + ViewFormat.bigIntegerFormat(playerData.priseTimeMachine) + "団子", "§f§l" + playerData.amountTimeMachine + "§7§lタイムマシンが毎秒§f§l" + ViewFormat.bigIntegerFormat(playerData.amountTimeMachine.multiply(BigInteger.valueOf(246912))) + "§7§l団子生産", "§7§o「食べられる前の団子を過去から取り寄せます」"));
 
-        ItemStack crickItem = GUI.createItem(Material.matchMaterial(Global.config.getString("clickItem.itemId", "COOKIE")), Global.config.getInt("clickItem.customModelData",0), "§e§lクリックで作る", List.of("§f§l" + ViewFormat.bigIntegerFormat(playerData.DPC) + "§7§l団子／クリック"));
+        ItemStack crickItem = GUI.createItem(Material.matchMaterial(Global.config.getString("clickItem.itemId", "COOKIE")), Global.config.getInt("clickItem.customModelData", 0), "§e§lクリックで作る", List.of("§f§l" + ViewFormat.bigIntegerFormat(playerData.DPC) + "§7§l団子／クリック"));
         ItemStack stock = GUI.createItem(Material.CHEST, 0, "§e§l現在の生産数", List.of("§a§l" + ViewFormat.bigIntegerFormat(playerData.stock) + "団子", "§f§l" + ViewFormat.bigIntegerFormat(playerData.DPS) + "§7§l団子／秒"));
         ItemStack save = GUI.createItem(Material.EMERALD_BLOCK, 0, "§e§lSAVE", null);
 
-        for (int i = 0; i <= 53; i++){inv.setItem(i, spaceItem);}
+        for (int i = 0; i <= 53; i++) {inv.setItem(i, spaceItem);}
 
         inv.setItem(0, cursor);
         inv.setItem(1, grandma);
