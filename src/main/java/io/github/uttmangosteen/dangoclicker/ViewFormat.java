@@ -10,9 +10,9 @@ public class ViewFormat {
         if(digitAmount == 0){
             return viewString.append("0.").append(number).toString();
         }else if(digitAmount <= 4){
-            return viewString.append(String.valueOf(number), 0, digitAmount).append(".").append(String.valueOf(number), digitAmount, digitAmount + 1).toString();
+            return viewString.append(String.valueOf(number), 0, digitAmount + 1).insert(digitAmount, ".").toString();
         }else if(digitAmount <= 64){
-            int digitNamePath = digitAmount / 4 % 18;
+            int digitNamePath = digitAmount / 4;
             int bigViewNumber = Integer.parseInt(String.valueOf(number).substring(0, digitAmount % 4));
             int smallViewNumber = Integer.parseInt(String.valueOf(number).substring(digitAmount % 4, digitAmount % 4 + 4));
             viewString.append(bigViewNumber).append(digitName[digitNamePath]);
@@ -21,8 +21,7 @@ public class ViewFormat {
             }
             return viewString.toString();
         }else{
-            int viewNumber = Integer.parseInt(String.valueOf(number).substring(0, 5));
-            viewString.append(viewNumber).insert(1, ".").append("E+").append(digitAmount - 1);
+            viewString.append(String.valueOf(number), 0, 5).insert(1, ".").append("E+").append(digitAmount - 1);
             return viewString.toString();
         }
     }
