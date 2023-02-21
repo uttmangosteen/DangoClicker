@@ -1,27 +1,10 @@
 package io.github.uttmangosteen.dangoclicker;
 
-public class PlayerData {
-    public double stock;
-    public double DPC;
-    public double DPS;
-    public int amountCursor;
-    public double priseCursor;
-    public int amountGrandma;
-    public double priseGrandma;
-    public int amountFactory;
-    public double priseFactory;
-    public int amountMine;
-    public double priseMine;
-    public int amountShipment;
-    public double priseShipment;
-    public int amountAlchemyLab;
-    public double priseAlchemyLab;
-    public int amountPortal;
-    public double prisePortal;
-    public int amountTimeMachine;
-    public double priseTimeMachine;
+import java.math.BigInteger;
 
-    public PlayerData(double stock, double dpc, double dps, int amountCursor, double priseCursor, int amountGrandma, double priseGrandma, int amountFactory, double priseFactory, int amountMine, double priseMine, int amountShipment, double priseShipment, int amountAlchemyLab, double priseAlchemyLab, int amountPortal, double prisePortal, int amountTimeMachine, double priseTimeMachine){
+public class PlayerData {
+    public BigInteger stock, DPC, DPS, amountCursor, priseCursor, amountGrandma, priseGrandma, amountFactory, priseFactory, amountMine, priseMine, amountShipment, priseShipment, amountAlchemyLab, priseAlchemyLab, amountPortal, prisePortal, amountTimeMachine, priseTimeMachine;
+    public PlayerData(BigInteger stock, BigInteger dpc, BigInteger dps, BigInteger amountCursor, BigInteger priseCursor, BigInteger amountGrandma, BigInteger priseGrandma, BigInteger amountFactory, BigInteger priseFactory, BigInteger amountMine, BigInteger priseMine, BigInteger amountShipment, BigInteger priseShipment, BigInteger amountAlchemyLab, BigInteger priseAlchemyLab, BigInteger amountPortal, BigInteger prisePortal, BigInteger amountTimeMachine, BigInteger priseTimeMachine){
         this.stock = stock;
         this.DPC = dpc;
         this.DPS = dps;

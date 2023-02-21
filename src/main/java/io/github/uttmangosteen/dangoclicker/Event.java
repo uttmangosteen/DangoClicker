@@ -8,6 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
+import java.math.BigInteger;
 import java.util.UUID;
 
 public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPluginManager().registerEvents(this, plugin);}
@@ -21,78 +22,78 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
         PlayerData playerData = Global.saveData.get(uuid);
         switch (clickedItem.getItemMeta().getDisplayName()){
             case "§e§lクリックで作る":
-                playerData.stock = playerData.stock + playerData.DPC;
+                playerData.stock = playerData.stock.add(playerData.DPC);
                 GUI.createInventory(player);
                 break;
             case "§e§lカーソル":
-                if(playerData.stock >= playerData.priseCursor){
-                    playerData.stock = playerData.stock - playerData.priseCursor;
-                    playerData.DPS = playerData.DPS + 0.2;
-                    playerData.amountCursor++;
-                    playerData.priseCursor = playerData.priseCursor * 1.1;
+                if(playerData.stock.compareTo(playerData.priseCursor) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseCursor);
+                    playerData.DPS = playerData.DPS.add(BigInteger.TWO);
+                    playerData.amountCursor = playerData.amountCursor.add(BigInteger.ONE);
+                    playerData.priseCursor = playerData.priseCursor.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lスティーブ":
-                if(playerData.stock >= playerData.priseGrandma){
-                    playerData.stock = playerData.stock - playerData.priseGrandma;
-                    playerData.DPS = playerData.DPS + 1;
-                    playerData.amountGrandma++;
-                    playerData.priseGrandma = playerData.priseGrandma * 1.1;
+                if(playerData.stock.compareTo(playerData.priseGrandma) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseGrandma);
+                    playerData.DPS = playerData.DPS.add(BigInteger.TEN);
+                    playerData.amountGrandma = playerData.amountGrandma.add(BigInteger.ONE);
+                    playerData.priseGrandma = playerData.priseGrandma.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§l工場":
-                if(playerData.stock >= playerData.priseFactory){
-                    playerData.stock = playerData.stock - playerData.priseFactory;
-                    playerData.DPS = playerData.DPS + 4;
-                    playerData.amountFactory++;
-                    playerData.priseFactory = playerData.priseFactory * 1.1;
+                if(playerData.stock.compareTo(playerData.priseFactory) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseFactory);
+                    playerData.DPS = playerData.DPS.add(BigInteger.valueOf(40));
+                    playerData.amountFactory = playerData.amountFactory.add(BigInteger.ONE);
+                    playerData.priseFactory = playerData.priseFactory.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§l採掘場":
-                if(playerData.stock >= playerData.priseMine){
-                    playerData.stock = playerData.stock - playerData.priseMine;
-                    playerData.DPS = playerData.DPS + 10;
-                    playerData.amountMine++;
-                    playerData.priseMine = playerData.priseMine * 1.1;
+                if(playerData.stock.compareTo(playerData.priseMine) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseMine);
+                    playerData.DPS = playerData.DPS.add(BigInteger.valueOf(100));
+                    playerData.amountMine = playerData.amountMine.add(BigInteger.ONE);
+                    playerData.priseMine = playerData.priseMine.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lドラゴン":
-                if(playerData.stock >= playerData.priseShipment){
-                    playerData.stock = playerData.stock - playerData.priseShipment;
-                    playerData.DPS = playerData.DPS + 20;
-                    playerData.amountShipment++;
-                    playerData.priseShipment = playerData.priseShipment * 1.1;
+                if(playerData.stock.compareTo(playerData.priseShipment) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseShipment);
+                    playerData.DPS = playerData.DPS.add(BigInteger.valueOf(200));
+                    playerData.amountShipment = playerData.amountShipment.add(BigInteger.ONE);
+                    playerData.priseShipment = playerData.priseShipment.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§l錬金術ラボ":
-                if(playerData.stock >= playerData.priseAlchemyLab){
-                    playerData.stock = playerData.stock - playerData.priseAlchemyLab;
-                    playerData.DPS = playerData.DPS + 100;
-                    playerData.amountAlchemyLab++;
-                    playerData.priseAlchemyLab = playerData.priseAlchemyLab * 1.1;
+                if(playerData.stock.compareTo(playerData.priseAlchemyLab) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseAlchemyLab);
+                    playerData.DPS = playerData.DPS.add(BigInteger.valueOf(1000));
+                    playerData.amountAlchemyLab = playerData.amountAlchemyLab.add(BigInteger.ONE);
+                    playerData.priseAlchemyLab = playerData.priseAlchemyLab.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lポータル":
-                if(playerData.stock >= playerData.prisePortal){
-                    playerData.stock = playerData.stock - playerData.prisePortal;
-                    playerData.DPS = playerData.DPS + 1333.2;
-                    playerData.amountPortal++;
-                    playerData.prisePortal = playerData.prisePortal * 1.1;
+                if(playerData.stock.compareTo(playerData.prisePortal) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.prisePortal);
+                    playerData.DPS = playerData.DPS.add(BigInteger.valueOf(13332));
+                    playerData.amountPortal = playerData.amountPortal.add(BigInteger.ONE);
+                    playerData.prisePortal = playerData.prisePortal.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;
             case "§e§lタイムマシン":
-                if(playerData.stock >= playerData.priseTimeMachine){
-                    playerData.stock = playerData.stock - playerData.priseTimeMachine;
-                    playerData.DPS = playerData.DPS + 24691.2;
-                    playerData.amountTimeMachine++;
-                    playerData.priseTimeMachine = playerData.priseTimeMachine * 1.1;
+                if(playerData.stock.compareTo(playerData.priseTimeMachine) >= 0){
+                    playerData.stock = playerData.stock.subtract(playerData.priseTimeMachine);
+                    playerData.DPS = playerData.DPS.add(BigInteger.valueOf(246912));
+                    playerData.amountTimeMachine = playerData.amountTimeMachine.add(BigInteger.ONE);
+                    playerData.priseTimeMachine = playerData.priseTimeMachine.multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                     GUI.createInventory(player);
                 }
                 break;

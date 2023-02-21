@@ -5,6 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigInteger;
 import java.util.UUID;
 
 public class Command implements CommandExecutor {
@@ -18,7 +19,7 @@ public class Command implements CommandExecutor {
         UUID uuid = player.getUniqueId();
         if (args.length == 0){
             if (!Global.saveData.containsKey(uuid)){
-                Global.saveData.put(uuid, new PlayerData(0, 1, 0, 0, 15, 0, 100, 0, 500, 0, 2000, 0, 7000, 0, 50000, 0, 1000000, 0, 123456789));
+                Global.saveData.put(uuid, new PlayerData(BigInteger.ZERO, BigInteger.TEN, BigInteger.ZERO, BigInteger.ZERO, BigInteger.valueOf(150), BigInteger.ZERO, BigInteger.valueOf(1000), BigInteger.ZERO, BigInteger.valueOf(5000), BigInteger.ZERO, BigInteger.valueOf(20000), BigInteger.ZERO, BigInteger.valueOf(70000), BigInteger.ZERO, BigInteger.valueOf(500000), BigInteger.ZERO, BigInteger.valueOf(10000000), BigInteger.ZERO, BigInteger.valueOf(1234567890)));
             }
             GUI.createInventory(player);
             return true;

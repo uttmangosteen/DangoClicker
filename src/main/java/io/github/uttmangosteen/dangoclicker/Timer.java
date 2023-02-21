@@ -12,7 +12,7 @@ public class Timer {
                 UUID uuid = player.getUniqueId();
                 PlayerData playerData = Global.saveData.get(uuid);
                 if(player.getOpenInventory().getTitle().equals("§d§lD§f§lan§a§lgo§e§lClicker§f")){
-                    playerData.stock = playerData.stock + playerData.DPS;
+                    playerData.stock = playerData.stock.add(playerData.DPS);
                     GUI.createInventory(player);
                 }
             }
