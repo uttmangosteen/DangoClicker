@@ -29,8 +29,7 @@ public class GUI {
         UUID uuid = player.getUniqueId();
         PlayerData playerData = Global.saveData.get(uuid);
 
-        Inventory inv = Bukkit.createInventory(null, 54, "§d§lD§f§lan§a§lgo§e§lClicker§f");
-
+        Inventory inv = Bukkit.createInventory(null, 54, "§9§l現在の在庫 §2§l" + ViewFormat.bigIntegerFormat(playerData.stock) + "団子");
 
         ItemStack spaceItem = GUI.createItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, 0, " ", null);
 
@@ -44,7 +43,7 @@ public class GUI {
         ItemStack timeMachine = GUI.createItem(Material.CLOCK, 0, "§e§lタイムマシン", List.of("§a§l" + ViewFormat.bigIntegerFormat(playerData.priseTimeMachine) + "団子", "§f§l" + playerData.amountTimeMachine + "§7§lタイムマシンが毎秒§f§l" + ViewFormat.bigIntegerFormat(playerData.amountTimeMachine.multiply(BigInteger.valueOf(246912))) + "§7§l団子生産", "§7§o「食べられる前の団子を過去から取り寄せます」"));
 
         ItemStack crickItem = GUI.createItem(Material.matchMaterial(Global.config.getString("clickItem.itemId", "COOKIE")), Global.config.getInt("clickItem.customModelData", 0), "§e§lクリックで作る", List.of("§f§l" + ViewFormat.bigIntegerFormat(playerData.DPC) + "§7§l団子／クリック"));
-        ItemStack stock = GUI.createItem(Material.CHEST, 0, "§e§l現在の生産数", List.of("§a§l" + ViewFormat.bigIntegerFormat(playerData.stock) + "団子", "§f§l" + ViewFormat.bigIntegerFormat(playerData.DPS) + "§7§l団子／秒"));
+        ItemStack stock = GUI.createItem(Material.CHEST, 0, "§e§l現在の生産数", List.of("§f§l" + ViewFormat.bigIntegerFormat(playerData.DPS) + "§7§l団子／秒"));
         ItemStack save = GUI.createItem(Material.EMERALD_BLOCK, 0, "§e§lSAVE", null);
 
         for (int i = 0; i <= 53; i++) {inv.setItem(i, spaceItem);}
@@ -67,7 +66,7 @@ public class GUI {
         if(!playerData.amountAlchemyLab.equals(BigInteger.ZERO)){
             inv.setItem(6, portal);
         }
-        if(!playerData.amountTimeMachine.equals(BigInteger.ZERO)){
+        if(!playerData.amountPortal.equals(BigInteger.ZERO)){
             inv.setItem(7, timeMachine);
         }
 

@@ -14,7 +14,7 @@ public class Timer {
                 if(!Global.saveData.isEmpty()){
                     playerData.stock = playerData.stock.add(playerData.DPS);
                 }
-                if(player.getOpenInventory().getTitle().equals("§d§lD§f§lan§a§lgo§e§lClicker§f")){
+                if(player.getOpenInventory().getTitle().contains("§9§l現在")){
                     GUI.createInventory(player);
                 }
             }
