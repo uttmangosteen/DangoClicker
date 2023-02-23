@@ -15,7 +15,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
     @EventHandler
     public void onClick(InventoryClickEvent e){
         ItemStack clickedItem = e.getCurrentItem();
-        if (clickedItem == null || !e.getClick().isLeftClick() || !e.getView().getTitle().contains("§1§a§l")) return;
+        if (clickedItem == null || !e.getView().getTitle().contains("§1§a§l")) return;
         e.setCancelled(true);
         Player player = (Player) e.getWhoClicked();
         UUID uuid = player.getUniqueId();
