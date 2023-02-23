@@ -25,7 +25,8 @@ public class GUI {
     }
 
     static ItemStack spaceItem = createItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, 0, " ", null);
-    static ItemStack save = createItem(Material.EMERALD_BLOCK, 0, "§e§lSAVE", List.of("§7§lこまめにセーブしましょう"));
+    static ItemStack load = createItem(Material.BOOK, 0, "§e§lLOAD", List.of("§7§l保存したものはここから"));
+    static ItemStack save = createItem(Material.WRITABLE_BOOK, 0, "§e§lSAVE", List.of("§7§lクリックで保存"));
 
     public static void createInventory(Player player) {
         UUID uuid = player.getUniqueId();
@@ -69,6 +70,7 @@ public class GUI {
 
         inv.setItem(22, stock);
         inv.setItem(40, crickItem);
+        inv.setItem(52, load);
         inv.setItem(53, save);
 
         player.openInventory(inv);
