@@ -105,12 +105,12 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
                     GUI.createInventory(player);
                 }
                 break;
+            case "§e§lLOAD":
+                player.sendMessage("§f§l[§d§lD§f§lan§a§lgo§e§lClicker§f§l]§b§lロード");
+                break;
             case "§e§lSAVE":
                 player.closeInventory();
                 player.sendMessage("§f§l[§d§lD§f§lan§a§lgo§e§lClicker§f§l]§a§lセーブ");
-                break;
-            case "§e§lLOAD":
-                player.sendMessage("§f§l[§d§lD§f§lan§a§lgo§e§lClicker§f§l]§b§lロード");
                 break;
         }
     }
