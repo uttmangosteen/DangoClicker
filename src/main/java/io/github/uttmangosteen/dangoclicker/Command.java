@@ -19,11 +19,12 @@ public class Command implements CommandExecutor {
         UUID uuid = player.getUniqueId();
         if (args.length == 0){
             if (!Global.saveData.containsKey(uuid)){
-                Global.saveData.put(uuid, new PlayerData(BigInteger.ZERO, BigInteger.TEN, BigInteger.ZERO, BigInteger.ZERO, BigInteger.valueOf(150), BigInteger.ZERO, BigInteger.valueOf(1000), BigInteger.ZERO, BigInteger.valueOf(5000), BigInteger.ZERO, BigInteger.valueOf(20000), BigInteger.ZERO, BigInteger.valueOf(70000), BigInteger.ZERO, BigInteger.valueOf(500000), BigInteger.ZERO, BigInteger.valueOf(10000000), BigInteger.ZERO, BigInteger.valueOf(1234567890)));
+                Global.saveData.put(uuid, new PlayerData(BigInteger.ZERO, BigInteger.ZERO, BigInteger.TEN, new BigInteger[]{BigInteger.valueOf(150), BigInteger.valueOf(1000), BigInteger.valueOf(11000), BigInteger.valueOf(120000), BigInteger.valueOf(1300000), BigInteger.valueOf(14000000), BigInteger.valueOf(200000000), BigInteger.valueOf(3300000000L), BigInteger.valueOf(51000000000L), BigInteger.valueOf(750000000000L), BigInteger.valueOf(10000000000000L), BigInteger.valueOf(140000000000000L), BigInteger.valueOf(1700000000000000L), BigInteger.valueOf(21000000000000000L), BigInteger.valueOf(2600000000000000000L), BigInteger.valueOf(1000000000000000000L).multiply(BigInteger.valueOf(31)), BigInteger.valueOf(1000000000000000000L).multiply(BigInteger.valueOf(7100))}, new BigInteger[]{BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO}, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
             }
             GUI.createInventory(player);
             return true;
         }
+
         switch (args[0]) {
             case "help":
                 player.sendMessage("/dclicker メインメニューを開く");
