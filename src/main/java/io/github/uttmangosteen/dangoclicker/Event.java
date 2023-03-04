@@ -11,11 +11,9 @@ import org.bukkit.plugin.Plugin;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import static io.github.uttmangosteen.dangoclicker.Global.*;
+
 public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPluginManager().registerEvents(this, plugin);}
-    private static final BigInteger[] buildingStandardDPS = {BigInteger.valueOf(1), BigInteger.valueOf(10), BigInteger.valueOf(80), BigInteger.valueOf(470), BigInteger.valueOf(2600), BigInteger.valueOf(14000), BigInteger.valueOf(78000), BigInteger.valueOf(440000), BigInteger.valueOf(2600000), BigInteger.valueOf(16000000), BigInteger.valueOf(100000000), BigInteger.valueOf(650000000), BigInteger.valueOf(4300000000L), BigInteger.valueOf(29000000000L), BigInteger.valueOf(21000000000000L), BigInteger.valueOf(150000000000000L), BigInteger.valueOf(1100000000000000000L)};
-    private static final BigInteger[] upGradeStandardPrice = {BigInteger.TEN, BigInteger.valueOf(50), BigInteger.valueOf(500), BigInteger.valueOf(50000), BigInteger.valueOf(5000000), BigInteger.valueOf(500000000), BigInteger.valueOf(500000000000L), BigInteger.valueOf(500000000000000L), BigInteger.valueOf(500000000000000000L), BigInteger.valueOf(5000000000000000000L).multiply(BigInteger.valueOf(100))};
-    private static final BigInteger[] upGradeCursorPrice = {BigInteger.valueOf(1000), BigInteger.valueOf(5000), BigInteger.valueOf(100000), BigInteger.valueOf(1000000), BigInteger.valueOf(100000000), BigInteger.valueOf(1000000000), BigInteger.valueOf(10000000000L), BigInteger.valueOf(100000000000L), BigInteger.valueOf(100000000000000L), BigInteger.valueOf(1000000000000000L)};
-    private static final BigInteger[] buildingStandardPrice = {BigInteger.valueOf(150), BigInteger.valueOf(1000), BigInteger.valueOf(11000), BigInteger.valueOf(120000), BigInteger.valueOf(1300000), BigInteger.valueOf(14000000), BigInteger.valueOf(200000000), BigInteger.valueOf(3300000000L), BigInteger.valueOf(51000000000L), BigInteger.valueOf(750000000000L), BigInteger.valueOf(10000000000000L), BigInteger.valueOf(140000000000000L), BigInteger.valueOf(1700000000000000L), BigInteger.valueOf(21000000000000000L), BigInteger.valueOf(2600000000000000000L), BigInteger.valueOf(1000000000000000000L).multiply(BigInteger.valueOf(31)), BigInteger.valueOf(1000000000000000000L).multiply(BigInteger.valueOf(7100))};
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         ItemStack clickedItem = e.getCurrentItem();
@@ -90,7 +88,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
         if (originalItemID <= 16) {
             if (playerData.stock.compareTo(playerData.priceBuilding[originalItemID]) >= 0) {
                 playerData.stock = playerData.stock.subtract(playerData.priceBuilding[originalItemID]);
-                playerData.amountBuilding[originalItemID]++;
+                ++playerData.amountBuilding[originalItemID];
                 playerData.dPSBuilding[originalItemID] = buildingStandardDPS[originalItemID].multiply(BigInteger.valueOf(playerData.amountBuilding[originalItemID])).multiply(BigInteger.TWO.pow(playerData.powerBuilding[originalItemID]));
                 playerData.priceBuilding[originalItemID] = playerData.priceBuilding[originalItemID].multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                 playerData.dPS = Arrays.stream(playerData.dPSBuilding).reduce(BigInteger.ZERO, BigInteger::add);
@@ -100,7 +98,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
             originalItemID = originalItemID - 100;
             if (playerData.stock.compareTo(buildingStandardPrice[originalItemID].multiply(upGradeStandardPrice[playerData.powerBuilding[originalItemID]])) >= 0) {
                 playerData.stock = playerData.stock.subtract(buildingStandardPrice[originalItemID].multiply(upGradeStandardPrice[playerData.powerBuilding[originalItemID]]));
-                playerData.powerBuilding[originalItemID]++;
+                ++playerData.powerBuilding[originalItemID];
                 playerData.dPSBuilding[originalItemID] = playerData.dPSBuilding[originalItemID].multiply(BigInteger.TWO);
                 playerData.dPS = Arrays.stream(playerData.dPSBuilding).reduce(BigInteger.ZERO, BigInteger::add);
                 GUI.createInventory(player);

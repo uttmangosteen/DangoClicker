@@ -9,9 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.UUID;
+
+import static io.github.uttmangosteen.dangoclicker.Global.*;
 
 public class GUI {
 
@@ -241,25 +243,21 @@ public class GUI {
             createItem(Material.COMMAND_BLOCK, 0, "§e§lJavaコンソールアップグレード", List.of("§7§lハッカーの陰", "§a§l35正5000澗団子", "§7§lJavaコンソールが§f§l2倍§7§l効率的になる"))
     }};
 
-    private static final int[] amountUnLockUpGrade = {1, 5, 25, 50, 100, 150, 200, 250, 300, 350};
-    private static final int[] amountUnLockUpGradeCursor = {1, 1, 10, 25, 50, 100, 150, 200, 250, 300};
-
     public static void createInventory(Player player) {
         UUID uuid = player.getUniqueId();
         PlayerData playerData = Global.saveData.get(uuid);
         Inventory inv = Bukkit.createInventory(null, 54, "§1§a§l現在の在庫 §2§l" + bigIntegerFormat(playerData.stock) + "団子");
 
-        ArrayList<ItemStack> upGrade = new ArrayList<>();
+        TreeMap<BigInteger, ItemStack> upGrade = new TreeMap<>();
         if(playerData.amountBuilding[0] >= amountUnLockUpGradeCursor[playerData.powerBuilding[0]]){
-            upGrade.add(itemUpGrade[0][playerData.powerBuilding[0]]);
+            upGrade.put(upGradeCursorPrice[playerData.powerBuilding[0]], itemUpGrade[0][playerData.powerBuilding[0]]);
         }
         for(int i = 1; i <= 16; i++){
             if(playerData.amountBuilding[i] >= amountUnLockUpGrade[playerData.powerBuilding[i]]){
-                upGrade.add(itemUpGrade[i][playerData.powerBuilding[i]]);
+                upGrade.put(buildingStandardPrice[i].multiply(upGradeStandardPrice[playerData.powerBuilding[i]]), itemUpGrade[i][playerData.powerBuilding[i]]);
             }
         }
-
-        ItemStack[] containUpGrade = new ItemStack[9];
+        ItemStack[] containUpGrade = upGrade.values().toArray(new ItemStack[9]);
 
         inv.setContents(new ItemStack[] {
             createItem(Material.ARROW, 0, "§e§lカーソル", List.of("§a§l" + bigIntegerFormat(playerData.priceBuilding[0]) + "団子", "§f§l" + playerData.amountBuilding[0] + "§7§lカーソルが毎秒§f§l" + bigIntegerFormat(playerData.dPSBuilding[0]) + "§7§l団子生産", "§7§o「10秒毎に自動クリック」")),
@@ -283,15 +281,15 @@ public class GUI {
             itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSpace, itemLoad, itemSpace, itemSeparate,
             createItem(Material.matchMaterial(Global.config.getString("clickItem.itemId", "COOKIE")), Global.config.getInt("clickItem.customModelData", 0), "§e§lクリックで作る", List.of("§f§l" + bigIntegerFormat(playerData.dPC) + "§7§l団子／クリック")),
             itemSeparate, itemSpace, itemSave, itemSpace, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate, itemSeparate,
-            itemSpace,
-                itemSpace,
-                itemSpace,
-                itemSpace,
-                itemSpace,
-                itemSpace,
-                itemSpace,
-                itemSpace,
-                itemSpace
+                containUpGrade[8] == null ? itemSpace : containUpGrade[8],
+                containUpGrade[7] == null ? itemSpace : containUpGrade[7],
+                containUpGrade[6] == null ? itemSpace : containUpGrade[6],
+                containUpGrade[5] == null ? itemSpace : containUpGrade[5],
+                containUpGrade[4] == null ? itemSpace : containUpGrade[4],
+                containUpGrade[3] == null ? itemSpace : containUpGrade[3],
+                containUpGrade[2] == null ? itemSpace : containUpGrade[2],
+                containUpGrade[1] == null ? itemSpace : containUpGrade[1],
+                containUpGrade[0] == null ? itemSpace : containUpGrade[0]
         });
         player.openInventory(inv);
     }
