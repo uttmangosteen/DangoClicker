@@ -257,7 +257,7 @@ public class GUI {
                 upGrade.put(buildingStandardPrice[i].multiply(upGradeStandardPrice[playerData.powerBuilding[i]]), itemUpGrade[i][playerData.powerBuilding[i]]);
             }
         }
-        ItemStack[] containUpGrade = upGrade.values().toArray(new ItemStack[9]);
+        ItemStack[] containUpGrade = upGrade.values().toArray(new ItemStack[17]);
 
         inv.setContents(new ItemStack[] {
             createItem(Material.ARROW, 0, "§e§lカーソル", List.of("§a§l" + bigIntegerFormat(playerData.priceBuilding[0]) + "団子", "§f§l" + playerData.amountBuilding[0] + "§7§lカーソルが毎秒§f§l" + bigIntegerFormat(playerData.dPSBuilding[0]) + "§7§l団子生産", "§7§o「10秒毎に自動クリック」")),
