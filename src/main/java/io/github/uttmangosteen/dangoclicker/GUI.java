@@ -25,7 +25,7 @@ public class GUI {
             return viewString.append("0.").append(number).toString();
         } else if (digitAmount <= 4) {
             return viewString.append(String.valueOf(number), 0, digitAmount + 1).insert(digitAmount, ".").toString();
-        } else if (digitAmount <= 64) {
+        } else if (digitAmount <= 72) {
             viewString.append(String.valueOf(number), 0, (digitAmount - 1) % 4 + 1).append(digitName[(digitAmount - 1) / 4]);
             int small4Digit = Integer.parseInt(String.valueOf(number).substring((digitAmount - 1) % 4 + 1, (digitAmount - 1) % 4 + 5));
             if(!(small4Digit == 0)){
@@ -42,8 +42,7 @@ public class GUI {
         ItemMeta meta = item.getItemMeta();
         meta.setCustomModelData(customModelData);
         meta.setDisplayName(displayName);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.values());
         if(lore != null){meta.setLore(lore);}
         item.setItemMeta(meta);
         return item;
@@ -249,10 +248,11 @@ public class GUI {
         Inventory inv = Bukkit.createInventory(null, 54, "§1§a§l現在の在庫 §2§l" + bigIntegerFormat(playerData.stock) + "団子");
 
         TreeMap<BigInteger, ItemStack> upGrade = new TreeMap<>();
-        if(playerData.amountBuilding[0] >= amountUnLockUpGradeCursor[playerData.powerBuilding[0]]){
+        if(playerData.powerBuilding[0] != 10 && playerData.amountBuilding[0] >= amountUnLockUpGradeCursor[playerData.powerBuilding[0]]){
             upGrade.put(upGradeCursorPrice[playerData.powerBuilding[0]], itemUpGrade[0][playerData.powerBuilding[0]]);
         }
         for(int i = 1; i <= 16; i++){
+            if(playerData.powerBuilding[i] == 10){continue;}
             if(playerData.amountBuilding[i] >= amountUnLockUpGrade[playerData.powerBuilding[i]]){
                 upGrade.put(buildingStandardPrice[i].multiply(upGradeStandardPrice[playerData.powerBuilding[i]]), itemUpGrade[i][playerData.powerBuilding[i]]);
             }

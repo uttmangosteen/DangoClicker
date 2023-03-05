@@ -70,7 +70,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
             case "§e§l農場アップグレード": originalItemID = 102; break;
             case "§e§l採掘場アップグレード": originalItemID = 103; break;
             case "§e§l工場アップグレード": originalItemID = 104; break;
-            case "§e§ll銀行アップグレード": originalItemID = 105; break;
+            case "§e§l銀行アップグレード": originalItemID = 105; break;
             case "§e§l神殿アップグレード": originalItemID = 106; break;
             case "§e§l魔法使いの塔アップグレード": originalItemID = 107; break;
             case "§e§l宇宙船アップグレード": originalItemID = 108; break;
@@ -88,7 +88,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
         if (originalItemID <= 16) {
             if (playerData.stock.compareTo(playerData.priceBuilding[originalItemID]) >= 0) {
                 playerData.stock = playerData.stock.subtract(playerData.priceBuilding[originalItemID]);
-                ++playerData.amountBuilding[originalItemID];
+                playerData.amountBuilding[originalItemID]++;
                 playerData.dPSBuilding[originalItemID] = buildingStandardDPS[originalItemID].multiply(BigInteger.valueOf(playerData.amountBuilding[originalItemID])).multiply(BigInteger.TWO.pow(playerData.powerBuilding[originalItemID]));
                 playerData.priceBuilding[originalItemID] = playerData.priceBuilding[originalItemID].multiply(BigInteger.valueOf(11)).divide(BigInteger.TEN);
                 playerData.dPS = Arrays.stream(playerData.dPSBuilding).reduce(BigInteger.ZERO, BigInteger::add);
@@ -98,7 +98,7 @@ public class Event implements Listener {public Event(Plugin plugin){Bukkit.getPl
             originalItemID = originalItemID - 100;
             if (playerData.stock.compareTo(buildingStandardPrice[originalItemID].multiply(upGradeStandardPrice[playerData.powerBuilding[originalItemID]])) >= 0) {
                 playerData.stock = playerData.stock.subtract(buildingStandardPrice[originalItemID].multiply(upGradeStandardPrice[playerData.powerBuilding[originalItemID]]));
-                ++playerData.powerBuilding[originalItemID];
+                playerData.powerBuilding[originalItemID]++;
                 playerData.dPSBuilding[originalItemID] = playerData.dPSBuilding[originalItemID].multiply(BigInteger.TWO);
                 playerData.dPS = Arrays.stream(playerData.dPSBuilding).reduce(BigInteger.ZERO, BigInteger::add);
                 GUI.createInventory(player);
